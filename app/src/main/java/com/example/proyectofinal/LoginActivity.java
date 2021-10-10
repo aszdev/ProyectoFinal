@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.proyectofinal.servicios.wsLogin;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
@@ -65,6 +67,8 @@ public class LoginActivity extends AppCompatActivity {
     private int existeUsuariows(String pmail, String ppass){
         int vretorna =1;
 
+        wsLogin vlog = new wsLogin();
+        vretorna = vlog.wsValid(pmail,ppass);
 
         return vretorna;
     }

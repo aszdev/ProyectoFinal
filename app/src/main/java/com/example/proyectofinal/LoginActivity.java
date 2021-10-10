@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectofinal.clases.funciones;
 import com.example.proyectofinal.servicios.wsLogin;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -71,9 +72,10 @@ public class LoginActivity extends AppCompatActivity {
     /// a la variable vretorna
     private int existeUsuariows(String pmail, String ppass){
         int vretorna =1;
-
+        funciones fn = new funciones();
         wsLogin vlog = new wsLogin();
-        vretorna = vlog.wsValid(pmail,ppass);
+        String encrypass =ppass;// fn.toSHA256(ppass);
+        vretorna = vlog.wsValid(pmail,encrypass);
 
         return vretorna;
     }

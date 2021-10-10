@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_dash_board.xml" value="0.1609375" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_login2.xml" value="0.1609375" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.1609375" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/menu/options_menu.xml" value="0.1609375" />
         <entry key="..\:/Users/MarcoVincio/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_login2.xml" value="0.18" />
         <entry key="..\:/Users/MarcoVincio/AndroidStudioProjects/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.18" />
       </map>

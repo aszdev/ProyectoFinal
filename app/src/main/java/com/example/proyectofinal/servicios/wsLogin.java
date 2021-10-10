@@ -13,23 +13,31 @@ import java.io.IOException;
 
 public class wsLogin {
     public int wsValid(String pmail, String ppass){
-        return 1;
+
+     AuthTask at = new  AuthTask();
+     at.setUsername(pmail);
+     at.setPassword(ppass);
+     at.execute();
+     String res= at.getResultado();
+     return Integer.parseInt(res);
     }
 }
 
 
-private class AuthTask extends AsyncTask<Void, Void, String> {
+class AuthTask extends AsyncTask<Void, Void, String> {
     public static final  String SOAP_ACTION = "http://192.168.1.10:8080/WSLogin/WebServiceLogin/iniciarSesion";
     public static final String METHOD = "iniciarSesion";
     public static final String NAMESPACE = "http://webservice/";
     public static final String URL = "http://192.168.1.10:8080/WSLogin/WebServiceLogin?wsdl";
-
+    private  String username;
+    private String password;
+    private  String resultado;
 
     @Override
     protected String doInBackground(Void... params) {
         SoapObject request = new SoapObject(NAMESPACE, METHOD);
-        request.addProperty("Correo", username);
-        request.addProperty("Clave", password);
+        request.addProperty("Correo", getUsername());
+        request.addProperty("Clave", getPassword());
         SoapSerializationEnvelope envelope =
                 new SoapSerializationEnvelope(SoapEnvelope.VER11);
         envelope.dotNet = false;
@@ -55,7 +63,32 @@ private class AuthTask extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String aBoolean) {
         super.onPostExecute(aBoolean);
-        tv1.setText("Resultado " + aBoolean);
+        //tv1.setText("Resultado " + aBoolean);
+        setResultado(aBoolean);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
     }
 }
 

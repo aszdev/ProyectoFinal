@@ -3,6 +3,7 @@ package com.example.proyectofinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,6 +13,10 @@ import android.widget.Toast;
 
 import com.example.proyectofinal.servicios.wsLogin;
 import com.google.android.material.textfield.TextInputLayout;
+
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -78,4 +83,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
+
 }
+

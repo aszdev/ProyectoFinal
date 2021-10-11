@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.proyectofinal.clases.funciones;
 import com.example.proyectofinal.servicios.wsLogin;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -21,24 +22,32 @@ import org.xmlpull.v1.XmlPullParserException;
 import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
-
+    private TextInputLayout et1;
+    private TextInputLayout et2;
+    private MaterialButton btn1;
+    private TextView tv1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
 
-        TextInputLayout vemail = (TextInputLayout)findViewById(R.id.usuarioTextField);
-        TextInputEditText vpass = (TextInputEditText)findViewById(R.id.claveinput);
-        String txt_emal = vemail.getEditText().getText().toString().trim();
-        String txt_pass = vpass.getText().toString().trim();
-        System.out.println("Clve or: " + txt_pass);
+        //TextInputLayout vemail = (TextInputLayout)findViewById(R.id.usuarioTextField);
+        //TextInputLayout vpass = (TextInputLayout)findViewById(R.id.contrasenaTextField);
+        //String txt_email = vemail.getEditText().getText().toString().trim();
+       // String txt_pass = vpass.getEditText().getText().toString().trim();
+
+        et1 = findViewById(R.id.usuarioTextField);
+        et2 = findViewById(R.id.contrasenaTextField);
 
         Button vbtnLog = (Button)findViewById(R.id.inicioSesion);
         vbtnLog.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                boolean flagh = validarUsuario(txt_emal,txt_pass);
+                String username =et1.getEditText().getText().toString();
+                String password =et2.getEditText().getText().toString();
+
+                boolean flagh = validarUsuario(username,password);
             }
         });
     }

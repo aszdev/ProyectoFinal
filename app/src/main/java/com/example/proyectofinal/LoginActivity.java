@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.proyectofinal.clases.funciones;
 import com.example.proyectofinal.servicios.wsLogin;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -28,9 +29,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login2);
 
         TextInputLayout vemail = (TextInputLayout)findViewById(R.id.usuarioTextField);
-        TextInputLayout vpass = (TextInputLayout)findViewById(R.id.contrasenaTextField);
-        String txt_emal = vemail.getEditText().getText().toString();
-        String txt_pass = vpass.getEditText().getText().toString();
+        TextInputEditText vpass = (TextInputEditText)findViewById(R.id.claveinput);
+        String txt_emal = vemail.getEditText().getText().toString().trim();
+        String txt_pass = vpass.getText().toString().trim();
+        System.out.println("Clve or: " + txt_pass);
 
         Button vbtnLog = (Button)findViewById(R.id.inicioSesion);
         vbtnLog.setOnClickListener(new View.OnClickListener(){
@@ -57,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if(idusuario>0){
             mostrarAlerta("Bienvenido!!!");
-            Intent intent = new Intent(LoginActivity.this, DashBoard.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivityMenu.class);
             startActivity(intent);
             finish();
             return true;

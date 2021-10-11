@@ -14,21 +14,23 @@ import java.io.IOException;
 public class wsLogin {
     public int wsValid(String pmail, String ppass){
 
-      new  AuthTask().execute();
-     //at.setUsername("ddasdsasa");
-     //at.setPassword("dsadsdasasaddssd");
-     //at.execute();
-     //String res= at.getResultado();
+    //  new  AuthTask().execute();
+        AuthTask at = new AuthTask();
+        at.setUsername(pmail);
+        at.setPassword(ppass);
+        at.execute();
+        String res= at.getResultado();
+        //int ret = Integer.valueOf(res);
      return 1;
     }
 }
 
 
 class AuthTask extends AsyncTask<Void, Void, String> {
-    public static final  String SOAP_ACTION = "http://localhost:8012/WebServices/Usuario/IniciarSesion";
+    public static final  String SOAP_ACTION = "http://192.168.1.4:8012/Usuario/IniciarSesionRequest";
     public static final String METHOD = "IniciarSesion";
-    public static final String NAMESPACE = "http://webservice/";
-    public static final String URL = "http://localhost:8012/WebServices/Usuario?wsdl";
+    public static final String NAMESPACE = "http://servicios.org/";
+    public static final String URL = "http://192.168.1.4:8012/WebServices/Usuario?wsdl";
     private  String username;
     private String password;
     private  String resultado;
@@ -36,9 +38,9 @@ class AuthTask extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
         SoapObject request = new SoapObject(NAMESPACE, METHOD);
-        request.addProperty("Correo","ddddd");
-        request.addProperty("Clave", "ddsadsad");
-
+        request.addProperty("Correo",getUsername());
+        request.addProperty("Clave", getPassword());
+        String res="0";
        // System.out.println("Email = " + getUsername());
         //System.out.println("Pass = " + getPassword());
 
@@ -50,20 +52,22 @@ class AuthTask extends AsyncTask<Void, Void, String> {
         HttpTransportSE tranport = new HttpTransportSE(URL);
         try {
             tranport.call(SOAP_ACTION, envelope);
+            SoapObject response = (SoapObject)envelope.bodyIn;
+            //SoapPrimitive result =
+            //(SoapPrimitive)response;
+
+            SoapPrimitive result =
+                    (SoapPrimitive)response.getProperty("return");
+            res = result.toString();
         } catch (IOException e){
             e.printStackTrace();
         } catch (XmlPullParserException e){
             e.printStackTrace();
         }
-        SoapObject response = (SoapObject)envelope.bodyIn;
-       // SoapPrimitive result =
-            //    (SoapPrimitive)response.;
 
-       SoapPrimitive result =
-              (SoapPrimitive)response.getProperty("vUsuario");
-      //  String result="1";
-
-        return result.toString();
+       // String result="1";
+        System.out.println("resultado: " + res);
+        return res;
     }
 
 

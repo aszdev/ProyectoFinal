@@ -18,8 +18,13 @@ import java.util.List;
 
 public class wsProductosTienda {
 public  List produtosTienda(String tienda,String prod){
-    ArrayList<ModeloProductosTienda> lsProdT = new ArrayList<>();
-    new TaskProductosTienda().execute("","");
+    List lsProdT = null;
+    try{
+        lsProdT = new TaskProductosTienda().execute("","").get();
+    }catch (Exception ex){
+
+    }
+
     return  lsProdT;
 }
 }

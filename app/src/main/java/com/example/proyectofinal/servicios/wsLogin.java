@@ -1,5 +1,7 @@
 package com.example.proyectofinal.servicios;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
 import org.ksoap2.SoapEnvelope;
@@ -14,8 +16,9 @@ import java.io.IOException;
 public class wsLogin {
     public int wsValid(String pmail, String ppass){
 
-    //  new  AuthTask().execute();
-        AuthTask at = new AuthTask();
+
+
+    AuthTask at = new AuthTask();
         at.setUsername(pmail);
         at.setPassword(ppass);
         at.execute();
@@ -27,6 +30,8 @@ public class wsLogin {
         }catch (Exception ex){
             System.out.println("Error al convertir el numero: " + ex.getMessage());
         }
+
+
      return 1;
     }
 }
@@ -39,7 +44,8 @@ class AuthTask extends AsyncTask<Void, Void, String> {
     public static final String URL = "http://192.168.1.2:8012/WebServices/Usuario?wsdl";
     private  String username;
     private String password;
-   static public   String resultado;
+    static public   String resultado;
+
 
     @Override
     protected String doInBackground(Void... params) {
@@ -47,6 +53,7 @@ class AuthTask extends AsyncTask<Void, Void, String> {
         request.addProperty("Correo",getUsername());
         request.addProperty("Clave", getPassword());
         String res="0";
+
        // System.out.println("Email = " + getUsername());
         //System.out.println("Pass = " + getPassword());
 

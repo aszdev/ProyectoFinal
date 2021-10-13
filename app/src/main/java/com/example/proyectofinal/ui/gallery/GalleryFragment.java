@@ -18,6 +18,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.proyectofinal.R;
 import com.example.proyectofinal.databinding.FragmentGalleryBinding;
+import com.example.proyectofinal.modelos.ModeloProductosTienda;
+import com.example.proyectofinal.servicios.wsProductosTienda;
+
+import java.util.Iterator;
+import java.util.List;
 
 public class GalleryFragment extends Fragment {
 
@@ -40,9 +45,31 @@ public class GalleryFragment extends Fragment {
             public void onChanged(@Nullable String s) {
                 //tfirstname.setText(s);
 
+            wsProductosTienda wsprod = new wsProductosTienda();
+            List lsprod = wsprod.produtosTienda("0","");
+            ModeloProductosTienda mprod =null;
+            Iterator<ModeloProductosTienda> itr = lsprod.iterator();
+
+            while (itr.hasNext()){
+                mprod = itr.next();
 
 
-                for (int i=0;i<5;i++){
+                View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.table_item,null,false);
+                TextView nit  = (TextView) tableRow.findViewById(R.id.nittienda);
+                TextView nombretienda  = (TextView) tableRow.findViewById(R.id.nombretienda);
+                TextView history_display_orderid  = (TextView) tableRow.findViewById(R.id.history_display_orderid);
+                TextView history_display_quantity  = (TextView) tableRow.findViewById(R.id.history_display_quantity);
+
+                nit.setText(mprod.getNit());
+                nombretienda.setText(mprod.getNomTienda());
+                history_display_orderid.setText("S0");
+                history_display_quantity.setText("");
+                tableLayout.addView(tableRow);
+
+
+            }
+
+            /*    for (int i=0;i<5;i++){
                     View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.table_item,null,false);
                     TextView history_display_no  = (TextView) tableRow.findViewById(R.id.nittienda);
                     TextView history_display_date  = (TextView) tableRow.findViewById(R.id.nombretienda);
@@ -55,6 +82,7 @@ public class GalleryFragment extends Fragment {
                     history_display_quantity.setText(""+(20+(i+1)));
                     tableLayout.addView(tableRow);
                 }
+                */
 
 
             }

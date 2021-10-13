@@ -54,14 +54,14 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean validarUsuario(String pmail, String ppass){
 
-     /*   if(TextUtils.isEmpty(pmail)){
+     if(TextUtils.isEmpty(pmail)){
             mostrarAlerta("Error! debe ingresar el Email");
             return  false;
         }
         if(TextUtils.isEmpty(ppass)){
             mostrarAlerta("Error! debe ingresar la Contraseña");
             return  false;
-        }*/
+        }
 
 ////--------------aqui va tu funcion de llamada al web service
         int idusuario = existeUsuariows(pmail,ppass);

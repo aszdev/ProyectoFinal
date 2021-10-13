@@ -19,21 +19,27 @@ public class wsLogin {
         at.setUsername(pmail);
         at.setPassword(ppass);
         at.execute();
-        String res= at.getResultado();
-        //int ret = Integer.valueOf(res);
+        int ret =0;
+        try{
+             String res= at.resultado;
+            System.out.println("Resultado final: " +res);
+             ret = Integer.valueOf(res);
+        }catch (Exception ex){
+            System.out.println("Error al convertir el numero: " + ex.getMessage());
+        }
      return 1;
     }
 }
 
 
 class AuthTask extends AsyncTask<Void, Void, String> {
-    public static final  String SOAP_ACTION = "http://192.168.1.4:8012/Usuario/IniciarSesionRequest";
+    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/Usuario/IniciarSesionRequest";
     public static final String METHOD = "IniciarSesion";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.4:8012/WebServices/Usuario?wsdl";
+    public static final String URL = "http://192.168.1.2:8012/WebServices/Usuario?wsdl";
     private  String username;
     private String password;
-    private  String resultado;
+   static public   String resultado;
 
     @Override
     protected String doInBackground(Void... params) {
@@ -67,6 +73,7 @@ class AuthTask extends AsyncTask<Void, Void, String> {
 
        // String result="1";
         System.out.println("resultado: " + res);
+        this.resultado = res;
         return res;
     }
 
@@ -75,7 +82,8 @@ class AuthTask extends AsyncTask<Void, Void, String> {
     protected void onPostExecute(String aBoolean) {
         super.onPostExecute(aBoolean);
         //tv1.setText("Resultado " + aBoolean);
-        setResultado(aBoolean);
+        this.resultado = aBoolean;
+       //setResultado(aBoolean);
     }
 
     public String getUsername() {
@@ -94,13 +102,6 @@ class AuthTask extends AsyncTask<Void, Void, String> {
         this.password = password;
     }
 
-    public String getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
-    }
 }
 
 

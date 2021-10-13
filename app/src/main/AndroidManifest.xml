@@ -28,9 +28,6 @@
             android:exported="true" />
 
         <activity
-            android:name=".ui.home.Listado"
-            android:exported="true" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -24,15 +24,10 @@
     <string name="nav_header_title">Sistema Dental</string>
     <string name="nav_header_subtitle">proyecto@miumg.com.gt</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Salir</string>
 
-<<<<<<< HEAD
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Productos por Tienda</string>
-    <string name="menu_slideshow">Slideshow</string>
-=======
     <string name="menu_home">Viajes Asignados</string>
     <string name="menu_gallery">Productos por Tienda</string>
     <string name="menu_slideshow">Reporte Ventas Tienda</string>
->>>>>>> master
+
 </resources>

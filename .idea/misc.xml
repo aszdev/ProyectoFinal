@@ -8,6 +8,8 @@
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/font/allura.xml" value="0.1125" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout-v17/fragment_gallery.xml" value="0.18645833333333334" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout-w936dp/table_item.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_dash_board.xml" value="0.1609375" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_login2.xml" value="0.1609375" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.1609375" />
@@ -18,6 +20,7 @@
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/fragment_slideshow.xml" value="0.18645833333333334" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/nav_header_main_activity_menu.xml" value="0.1" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/table_item.xml" value="0.18645833333333334" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/menu/main_activity_menu.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/menu/options_menu.xml" value="0.1609375" />

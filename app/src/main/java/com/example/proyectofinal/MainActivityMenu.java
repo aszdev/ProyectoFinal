@@ -14,6 +14,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
+
+
 import com.example.proyectofinal.databinding.ActivityMainMenuBinding;
 
 public class MainActivityMenu extends AppCompatActivity {
@@ -27,6 +29,7 @@ public class MainActivityMenu extends AppCompatActivity {
 
         binding = ActivityMainMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
 
         setSupportActionBar(binding.appBarMainActivityMenu.toolbar);
         binding.appBarMainActivityMenu.fab.setOnClickListener(new View.OnClickListener() {

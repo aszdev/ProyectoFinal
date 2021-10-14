@@ -7,7 +7,7 @@ private String DirTienda;
 private String codprod;
 private String NomProd;
 private String Descripcion;
-private String Stock;
+private int Stock;
 private double PrecioCompra;
 private double PrecioVenta;
 
@@ -60,11 +60,11 @@ private double PrecioVenta;
         Descripcion = descripcion;
     }
 
-    public String getStock() {
+    public int getStock() {
         return Stock;
     }
 
-    public void setStock(String stock) {
+    public void setStock(int stock) {
         Stock = stock;
     }
 

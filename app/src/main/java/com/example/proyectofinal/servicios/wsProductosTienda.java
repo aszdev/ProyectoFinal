@@ -68,9 +68,20 @@ class TaskProductosTienda extends AsyncTask<String, Void, List> {
                     SoapObject so = (SoapObject) soapObject.getProperty(i);
                     ModeloProductosTienda obj = new ModeloProductosTienda();
                     obj.setNit(so.getPropertyAsString("nit"));
-                    obj.setNomTienda(so.getPropertyAsString("nombreTienda"));
-                 System.out.println( "\nNIT " + obj.getNit());
-                 System.out.println( "\nTienda " + obj.getNomTienda());
+                    obj.setNomTienda(so.getPropertyAsString("nombretienda"));
+                    obj.setDirTienda(so.getPropertyAsString("direccion"));
+                    obj.setCodprod(so.getPropertyAsString("codigoprod"));
+                    obj.setNomProd(so.getPropertyAsString("nombreProducto"));
+                    obj.setDescripcion(so.getPropertyAsString("descripcion"));
+                    try{
+                        obj.setStock(Integer.parseInt(so.getPropertyAsString("stock").toString()));
+                        obj.setPrecioCompra(Double.parseDouble(so.getPropertyAsString("precioCompra").toString()));
+                        obj.setPrecioVenta(Double.parseDouble(so.getPropertyAsString("precioVenta").toString()));
+
+                    }catch (Exception ex){
+
+                    }
+
                     lsProdT.add(obj);
                 }
             }

@@ -56,15 +56,12 @@ public class SlideshowFragment extends Fragment {
 
 
                     View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.table_item,null,false);
-                    TextView nit  = (TextView) tableRow.findViewById(R.id.nittienda);
-                    TextView nombretienda  = (TextView) tableRow.findViewById(R.id.nombretienda);
-                    TextView history_display_orderid  = (TextView) tableRow.findViewById(R.id.history_display_orderid);
-                    TextView history_display_quantity  = (TextView) tableRow.findViewById(R.id.history_display_quantity);
+                   // TextView nit  = (TextView) tableRow.findViewById(R.id.nittienda);
+                    //TextView nombretienda  = (TextView) tableRow.findViewById(R.id.nombretienda);
 
-                    nit.setText(mprod.getNit());
-                    nombretienda.setText(mprod.getNomTienda());
-                    history_display_orderid.setText("S0");
-                    history_display_quantity.setText("");
+                   // nit.setText(mprod.getNit());
+                    //nombretienda.setText(mprod.getNomTienda());
+
                    // tableLayout.addView(tableRow);
 
 

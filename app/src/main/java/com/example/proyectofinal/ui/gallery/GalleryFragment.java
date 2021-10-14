@@ -55,15 +55,24 @@ public class GalleryFragment extends Fragment {
 
 
                 View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.table_item,null,false);
-                TextView nit  = (TextView) tableRow.findViewById(R.id.nittienda);
-                TextView nombretienda  = (TextView) tableRow.findViewById(R.id.nombretienda);
-                TextView history_display_orderid  = (TextView) tableRow.findViewById(R.id.history_display_orderid);
-                TextView history_display_quantity  = (TextView) tableRow.findViewById(R.id.history_display_quantity);
+               // TextView nit  = (TextView) tableRow.findViewById(R.id.nittienda);
+              //  TextView nombretienda  = (TextView) tableRow.findViewById(R.id.nombretienda);
+               // TextView dirtienda  = (TextView) tableRow.findViewById(R.id.dirtienda);
+                TextView codprod  = (TextView) tableRow.findViewById(R.id.codprod);
+                TextView nomprod  = (TextView) tableRow.findViewById(R.id.descripcion);
+                TextView stock  = (TextView) tableRow.findViewById(R.id.stock);
+                TextView pcompra  = (TextView) tableRow.findViewById(R.id.preciocompra);
+                TextView pventa  = (TextView) tableRow.findViewById(R.id.precioventa);
 
-                nit.setText(mprod.getNit());
-                nombretienda.setText(mprod.getNomTienda());
-                history_display_orderid.setText("S0");
-                history_display_quantity.setText("");
+                //nit.setText(mprod.getNit());
+              //  nombretienda.setText(mprod.getNomTienda());
+               // dirtienda.setText(mprod.getDirTienda());
+                codprod.setText(mprod.getCodprod());
+                nomprod.setText(mprod.getDescripcion());
+                stock.setText(String.valueOf(mprod.getStock()));
+                pcompra.setText(String.valueOf(mprod.getPrecioCompra()));
+                pventa.setText(String.valueOf(mprod.getPrecioVenta()));
+
                 tableLayout.addView(tableRow);
 
 

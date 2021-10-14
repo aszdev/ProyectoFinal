@@ -15,7 +15,7 @@ public class DescriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_description);
+        setContentView(R.layout.activity_description2);
 
 //contiene la infor de la lista que presionamos
         ListElement element = (ListElement)  getIntent().getSerializableExtra("ListElement");

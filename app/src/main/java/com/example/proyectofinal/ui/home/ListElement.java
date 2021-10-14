@@ -8,13 +8,15 @@ public class ListElement implements Serializable {
     public String name;
     public String city;
     public String status;
+    private String id;
 
 
-    public ListElement(String color, String name, String city, String status) {
+    public ListElement(String color, String name, String city, String status,String id) {
         Color = color;
         this.name = name;
         this.city = city;
         this.status = status;
+        this.setId(id);
     }
 
     public String getColor() {
@@ -47,5 +49,13 @@ public class ListElement implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

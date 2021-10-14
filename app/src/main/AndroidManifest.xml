@@ -19,6 +19,9 @@
             android:name=".ui.home.DescriptionActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.slideshow.DescriptionActivity2"
+            android:exported="true" />
+        <activity
             android:name=".MainActivityMenu"
             android:exported="true"
             android:label="@string/title_activity_main_menu"

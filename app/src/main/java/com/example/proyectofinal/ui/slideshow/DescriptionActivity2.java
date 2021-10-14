@@ -13,17 +13,18 @@ public class DescriptionActivity2 extends AppCompatActivity {
     TextView titleDescriptionTextview;
     TextView cityDescriptionTextview;
     TextView statusDescriptionTextview;
+    TextView statusDescriptionID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description2);
 
 //contiene la infor de la lista que presionamos
-        ListElement element = (ListElement)  getIntent().getSerializableExtra("ListElement");
+        ListElement element = (ListElement)  getIntent().getSerializableExtra("ListElement2");
         titleDescriptionTextview = findViewById(R.id.titleDescriptionTextview);
         cityDescriptionTextview = findViewById(R.id.cityDescriptionTextview);
         statusDescriptionTextview = findViewById(R.id.statusDescriptionTextview);
-
+        statusDescriptionID= findViewById(R.id.statusDescriptionID);
         titleDescriptionTextview.setText(element.getName());
         titleDescriptionTextview.setTextColor(Color.parseColor(element.getColor()));
 
@@ -31,5 +32,9 @@ public class DescriptionActivity2 extends AppCompatActivity {
 
         statusDescriptionTextview.setText(element.getStatus());
         statusDescriptionTextview.setTextColor(Color.GRAY);
+
+        statusDescriptionID.setText(element.getId());
+
+
     }
 }

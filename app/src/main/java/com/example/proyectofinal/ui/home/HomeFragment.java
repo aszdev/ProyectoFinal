@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
                 while (itr.hasNext()){
                     mtienda = itr.next();
 
-                    elements.add(new ListElement("#607d8b", mtienda.getNombre(), mtienda.getDireccion(), "Activo"));
+                    elements.add(new ListElement("#607d8b", mtienda.getNombre(), mtienda.getDireccion(), "Tel: " + mtienda.getTelefono(), mtienda.getIdTienda()));
 
                 }
 

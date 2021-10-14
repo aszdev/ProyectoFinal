@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.proyectofinal.R;
 import com.example.proyectofinal.databinding.FragmentSlideshowBinding;
+import com.example.proyectofinal.modelos.ModeloListarTiendas;
 import com.example.proyectofinal.modelos.ModeloProductosTienda;
 import com.example.proyectofinal.servicios.wsProductosTienda;
 import com.example.proyectofinal.servicios.wsVentasTienda;
@@ -35,9 +37,8 @@ public class SlideshowFragment extends Fragment {
 
         binding = FragmentSlideshowBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        final TableLayout tableLayout = binding.tableLayout2;
 
-        final TextView textView = binding.textSlideshow;
-        final TextInputLayout editText = binding.FechafinTextField;
 
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
@@ -47,22 +48,26 @@ public class SlideshowFragment extends Fragment {
 
 
                 wsVentasTienda wsventas = new wsVentasTienda();
+
                 List lstiendas = wsventas.listarTiendas();
-                ModeloProductosTienda mprod =null;
-                Iterator<ModeloProductosTienda> itr = lstiendas.iterator();
+                ModeloListarTiendas mprod =null;
+                Iterator<ModeloListarTiendas> itr = lstiendas.iterator();
 
                 while (itr.hasNext()){
                     mprod = itr.next();
 
 
-                    View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.table_item,null,false);
-                   // TextView nit  = (TextView) tableRow.findViewById(R.id.nittienda);
-                    //TextView nombretienda  = (TextView) tableRow.findViewById(R.id.nombretienda);
+                    View tableRow = LayoutInflater.from(getContext()).inflate(R.layout.table_item2,null,false);
+                    TextView direccion  = (TextView) tableRow.findViewById(R.id.direccion);
+                    TextView idtienda  = (TextView) tableRow.findViewById(R.id.idtienda);
+                    TextView nombre  = (TextView) tableRow.findViewById(R.id.nombre);
+                    TextView telefono  = (TextView) tableRow.findViewById(R.id.telefono);
 
-                   // nit.setText(mprod.getNit());
-                    //nombretienda.setText(mprod.getNomTienda());
-
-                   // tableLayout.addView(tableRow);
+                    direccion.setText(mprod.getDireccion());
+                    idtienda.setText(mprod.getIdTienda());
+                    nombre.setText(mprod.getNombre());
+                    telefono.setText(mprod.getTelefono());
+                    tableLayout.addView(tableRow);
 
 
                 }

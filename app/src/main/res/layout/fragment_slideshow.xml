@@ -1,79 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.slideshow.SlideshowFragment"
-    android:padding="25dp"
-    android:orientation="vertical">
+    tools:context=".ui.slideshow.SlideshowFragment">
 
-
-
-
-    <TextView
-        android:id="@+id/text_slideshow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="28dp"
-        android:fontFamily="sans-serif"
-        android:text="Reporte Venta"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:transitionName="textTrans" />
-
-
-
-    <LinearLayout
+    <!--
+        <TextView
+            android:id="@+id/text_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    -->
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableLayout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="14dp"
-        android:layout_marginBottom="14dp"
+        android:layout_height="match_parent"
+        android:padding="5dp"
         android:orientation="vertical">
-        <com.google.android.material.textfield.TextInputLayout
+
+        <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:id="@+id/FechaInicioTextField"
-            android:hint="Fecha Inicio"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF5733">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="86dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:inputType="date"
-                android:focusable="false"
-                android:clickable="true"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="Direccion" />
 
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:id="@+id/FechafinTextField"
-            android:hint="Fecha Final"
-
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="93dp"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:inputType="date"
-                android:focusable="false"
-                android:clickable="true"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:text="Id Tienda" />
 
+            <TextView
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/GenerarReporte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Generar"
-            android:layout_marginTop="2dp"
-            android:layout_marginBottom="7dp"/>
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:text="Nombre Tienda" />
 
-    </LinearLayout>
+            <TextView
 
-</LinearLayout>
+                android:layout_width="88dp"
+                android:layout_height="wrap_content"
+                android:text="Telefono" />
+        </TableRow>
+
+    </TableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

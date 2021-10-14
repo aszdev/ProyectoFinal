@@ -20,7 +20,7 @@ public class wsProductosTienda {
 public  List produtosTienda(String tienda,String prod){
     List lsProdT = null;
     try{
-        lsProdT = new TaskProductosTienda().execute("","").get();
+        lsProdT = new TaskProductosTienda().execute(tienda,"").get();
     }catch (Exception ex){
 
     }

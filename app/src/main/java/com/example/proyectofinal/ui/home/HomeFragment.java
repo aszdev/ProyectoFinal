@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,9 @@ import androidx.fragment.app.Fragment;
 import com.example.proyectofinal.R;
 import com.example.proyectofinal.clases.funciones;
 import com.example.proyectofinal.databinding.FragmentHomeBinding;
+import com.example.proyectofinal.modelos.ModeloListarTiendas;
+import com.example.proyectofinal.modelos.ModeloTiendaItem;
+import com.example.proyectofinal.servicios.wsVentasTienda;
 import com.example.proyectofinal.ui.gallery.GalleryViewModel;
 
 public class HomeFragment extends Fragment {
@@ -50,9 +54,23 @@ public class HomeFragment extends Fragment {
 
                 elements = new ArrayList<>();
 
-                funciones fn = new funciones();
 
-                elements.add(new ListElement("#775447", "Pedro", "Mexico", "Activo"));
+                ArrayList<ModeloTiendaItem> tiendasList = new ArrayList<>();
+                //Add countries
+
+                wsVentasTienda wsTienda = new wsVentasTienda();
+                List lsti =wsTienda.listarTiendas();
+                ModeloListarTiendas mtienda =null;
+                Iterator<ModeloListarTiendas> itr = lsti.iterator();
+
+                while (itr.hasNext()){
+                    mtienda = itr.next();
+
+                    elements.add(new ListElement("#607d8b", mtienda.getNombre(), mtienda.getDireccion(), "Activo"));
+
+                }
+
+              /*  elements.add(new ListElement("#775447", "Pedro", "Mexico", "Activo"));
                 elements.add(new ListElement("#607d8b", "Julio", "Mixco", "Activo"));
                 elements.add(new ListElement("#f44336", "Jose", "VillaNueva", "Activo"));
                 elements.add(new ListElement("#009688", "Jesica", "Guatemla", "Inactivo"));
@@ -68,6 +86,9 @@ public class HomeFragment extends Fragment {
                 elements.add(new ListElement("#607d8b", "Julio", "Mixco", "Activo"));
                 elements.add(new ListElement("#f44336", "Jose", "VillaNueva", "Activo"));
                 elements.add(new ListElement("#009688", "Jesica", "Guatemla", "Inactivo"));
+               */
+
+
                 ListAdapter listAdapter = new ListAdapter(elements, getContext(), new ListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(ListElement item) {

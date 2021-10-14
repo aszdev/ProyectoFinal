@@ -11,78 +11,41 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <Spinner
             android:id="@+id/tiendas_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="5dp"
-        android:orientation="vertical">
-
-        <TableRow
-            android:layout_width="match_parent"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:background="#A1A09C"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:background="#9F9E9E"
+            />
 
-            <TextView
-                android:id="@+id/headercodpro"
-                android:layout_width="0dp"
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnGenear"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Generar">
+
+        </com.google.android.material.button.MaterialButton>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:id="@+id/tableLayout"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:gravity="center"
-                android:text="CodPrdo"
-                android:textStyle="bold"/>
+                android:orientation="vertical"
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/headeredescription"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="Descripcion"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/headerstock"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:gravity="center"
-                android:text="Stock"
-                android:textStyle="bold"/>
+            </TableLayout>
 
-            <TextView
-                android:id="@+id/headerpeciocompra"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:gravity="center"
-                android:text="PrecioCompra"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/headeprecioventa"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.25"
-                android:gravity="center"
-                android:text="PrecioVenta"
-                android:textStyle="bold"/>
-
-        </TableRow>
-
-    </TableLayout>
-
-</ScrollView>
+        </ScrollView>
     </LinearLayout>
 
 

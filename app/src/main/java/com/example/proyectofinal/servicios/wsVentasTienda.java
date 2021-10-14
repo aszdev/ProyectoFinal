@@ -21,7 +21,7 @@ public class wsVentasTienda {
     public List listarTiendas(){
         List lsTienda = null;
         try{
-            lsTienda = new TaskVentasTienda().execute("","").get();
+            lsTienda = new TaskListarTienda().execute().get();
         }catch (Exception ex){
 
         }
@@ -33,11 +33,11 @@ public class wsVentasTienda {
 
 
 
-class TaskVentasTienda extends AsyncTask<String, Void, List> {
-    public static final  String SOAP_ACTION = "http://192.168.1.5:8080/WSLogin/WsTiendas/ListarT";
-    public static final String METHOD = "ListarT";
-    public static final String NAMESPACE = "http://webservice/";
-    public static final String URL = "http://192.168.1.5:8080/WsTiendas/WsTiendas?wsdl";
+class TaskListarTienda extends AsyncTask<String, Void, List> {
+    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ListadoTiendas";
+    public static final String METHOD = "ListadoTiendas";
+    public static final String NAMESPACE = "http://servicios.org/";
+    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
 
     private  String username;
     private String password;
@@ -111,7 +111,7 @@ class TaskVentasTienda extends AsyncTask<String, Void, List> {
 
 
 
-/*class TaskListarTienda extends AsyncTask<String, Void, List> {
+/*class TaskVentasTienda extends AsyncTask<String, Void, List> {
     public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ProductosTienda";
     public static final String METHOD = "ProductosTienda";
     public static final String NAMESPACE = "http://servicios.org/";

@@ -2,8 +2,8 @@
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-<!--
+    android:orientation="vertical">
+    <!--
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -25,34 +25,38 @@
         android:layout_weight="0.25"
         android:gravity="center"/> -->
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
         android:id="@+id/codprod"
-        android:layout_weight="0.25"
-        android:gravity="center"/>
-    <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:gravity="left" />
+
+    <TextView
         android:id="@+id/descripcion"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:gravity="center"/>
+        android:gravity="left" />
+
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
         android:id="@+id/stock"
-        android:layout_weight="0.25"
-        android:gravity="center"/>
-    <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:gravity="left" />
+
+    <TextView
         android:id="@+id/preciocompra"
-        android:layout_weight="0.25"
-        android:gravity="center"/>
-    <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="0.30"
+        android:gravity="center" />
+
+    <TextView
         android:id="@+id/precioventa"
-        android:layout_weight="0.25"
-        android:gravity="center"/>
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.30"
+        android:gravity="center" />
 
 </TableRow>

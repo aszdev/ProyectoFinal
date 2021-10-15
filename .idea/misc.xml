@@ -7,11 +7,13 @@
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/drawable-v21/ic_menu_gallery.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/drawable/icontienda2.xml" value="0.20260416666666667" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/font/allura.xml" value="0.1125" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout-v17/fragment_gallery.xml" value="0.18645833333333334" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout-w936dp/table_item.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_dash_board.xml" value="0.1609375" />
-        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_description2.xml" value="0.18645833333333334" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_description.xml" value="0.1" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_description2.xml" value="0.12" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_login2.xml" value="0.1609375" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_main.xml" value="0.1609375" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/activity_main_menu.xml" value="0.1" />
@@ -21,9 +23,12 @@
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/fragment_slideshow.xml" value="0.18645833333333334" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/list_element.xml" value="0.1" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/list_element2.xml" value="0.1838768115942029" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/list_element3.xml" value="0.1838768115942029" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/nav_header_main_activity_menu.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/spinner_item.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/table_item.xml" value="0.18645833333333334" />
+        <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/table_item2.xml" value="0.1838768115942029" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/layout/table_item_header.xml" value="0.18645833333333334" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
         <entry key="..\:/UMG/ProyectoDesarrollo/Android/ProyectoFinal/app/src/main/res/menu/main_activity_menu.xml" value="0.1" />

@@ -6,6 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".ui.slideshow.DescriptionActivity2">
 
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/GenerarReporte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="-5dp"
+        android:layout_marginRight="-5dp"
+        android:layout_marginBottom="464dp"
+        android:text="Generar Reporte" />
+
+    <ImageView
+        android:layout_width="366dp"
+        android:layout_height="201dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="162dp"
+        android:layout_marginLeft="162dp"
+        android:layout_marginEnd="-117dp"
+        android:layout_marginRight="-117dp"
+        android:layout_marginBottom="616dp"
+        android:src="@drawable/logo"
+        android:transitionName="LogoImagesTrans" />
+
     <TextView
         android:id="@+id/titleDescriptionTextview"
         android:layout_width="wrap_content"
@@ -13,10 +48,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Nombre Tienda"
+        android:text="Tienda"
         android:textColor="@android:color/black"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        />
+
 
     <TextView
         android:id="@+id/cityDescriptionTextview"
@@ -25,16 +63,12 @@
         android:layout_below="@+id/titleDescriptionTextview"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="171dp"
-        android:layout_marginLeft="171dp"
-        android:layout_marginTop="86dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginRight="152dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="1dp"
         android:text="Ciudad"
         android:textColor="@android:color/black"
-        android:textSize="28sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/statusDescriptionTextview"
@@ -43,34 +77,91 @@
         android:layout_below="@+id/cityDescriptionTextview"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginStart="141dp"
-        android:layout_marginLeft="141dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="192dp"
-        android:layout_marginRight="192dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="3dp"
         android:text="Telefono"
         android:textColor="@android:color/black"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/statusDescriptionID"
-        android:layout_width="94dp"
-        android:layout_height="42dp"
+        android:layout_width="119dp"
+        android:layout_height="30dp"
         android:layout_below="@+id/statusDescriptionTextview"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="110dp"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="207dp"
-        android:layout_marginRight="207dp"
-        android:layout_marginBottom="273dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="274dp"
+        android:layout_marginRight="274dp"
+        android:layout_marginBottom="546dp"
         android:text="Telefono"
         android:textColor="@android:color/black"
-        android:textSize="20sp" />
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="160dp"
+        android:layout_height="26dp"
+        android:layout_below="@+id/statusDescriptionTextview"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="227dp"
+        android:layout_marginRight="227dp"
+        android:layout_marginBottom="534dp"
+        android:fontFamily="sans-serif"
+        android:text="Selecciona Fecha Inicio"
+        android:textColor="@color/color_lauch"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:transitionName="textTrans" />
+
+    <TextView
+        android:id="@+id/et_Date"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/statusDescriptionTextview"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="214dp"
+        android:layout_marginLeft="214dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
+        android:layout_marginBottom="531dp"
+        android:fontFamily="sans-serif"
+        android:text="Selecciona Fecha Fin"
+        android:textColor="@color/color_lauch"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:transitionName="textTrans" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listRecyclerview2"
+        android:layout_width="583dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="360dp"
+        android:visibility="visible" />
+
 </RelativeLayout>

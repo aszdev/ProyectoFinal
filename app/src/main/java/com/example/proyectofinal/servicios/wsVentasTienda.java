@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 
 import com.example.proyectofinal.modelos.ModeloListarTiendas;
 import com.example.proyectofinal.modelos.ModeloProductosTienda;
+import com.example.proyectofinal.modelos.ModeloReporteVentas;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -27,6 +28,18 @@ public class wsVentasTienda {
         }
 
         return  lsTienda;
+    }
+
+    public List listarVentas(String fechaini,String fechafin,String tienda){
+        List lsvent = null;
+        try{
+            System.out.println("Si llega");
+            lsvent = new TaskVentasTienda().execute(fechaini,fechafin,tienda).get();
+        }catch (Exception ex){
+
+        }
+
+        return  lsvent;
     }
 
 }
@@ -111,9 +124,9 @@ class TaskListarTienda extends AsyncTask<String, Void, List> {
 
 
 
-/*class TaskVentasTienda extends AsyncTask<String, Void, List> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ProductosTienda";
-    public static final String METHOD = "ProductosTienda";
+class TaskVentasTienda extends AsyncTask<String, Void, List> {
+    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ReporteVenta";
+    public static final String METHOD = "ReporteVenta";
     public static final String NAMESPACE = "http://servicios.org/";
     public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
     private  String username;
@@ -123,11 +136,11 @@ class TaskListarTienda extends AsyncTask<String, Void, List> {
 
     @Override
     protected List doInBackground(String... strings) {
-        ArrayList<ModeloProductosTienda> lsProdT = new ArrayList<>();
+        ArrayList<ModeloReporteVentas> lstVentas = new ArrayList<>();
         SoapObject request = new SoapObject(NAMESPACE, METHOD);
-        request.addProperty("tienda",strings[0]);
-        request.addProperty("codigo", strings[1]);
-
+        request.addProperty("FechaInicio",strings[0]);
+        request.addProperty("FechaFinal", strings[1]);
+        request.addProperty("TiendaID", strings[2]);
 
         // System.out.println("Email = " + getUsername());
         //System.out.println("Pass = " + getPassword());
@@ -148,36 +161,38 @@ class TaskListarTienda extends AsyncTask<String, Void, List> {
             if (soapObject != null && soapObject.getPropertyCount() > 0) {
                 for (int i = 0; i < soapObject.getPropertyCount(); i++) {
                     SoapObject so = (SoapObject) soapObject.getProperty(i);
-                    ModeloProductosTienda obj = new ModeloProductosTienda();
-                    obj.setNit(so.getPropertyAsString("nit"));
-                    obj.setNomTienda(so.getPropertyAsString("nombreTienda"));
-                    System.out.println( "\nNIT " + obj.getNit());
-                    System.out.println( "\nTienda " + obj.getNomTienda());
-                    lsProdT.add(obj);
+                    ModeloReporteVentas obj = new ModeloReporteVentas();
+                    obj.setCantidad_prod(so.getPropertyAsString("cantidad_prod"));
+                    obj.setFecha_venta(so.getPropertyAsString("fecha_Venta"));
+                    obj.setNit_tienda(so.getPropertyAsString("nit_Tienda"));
+                    obj.setNombre_Empleado(so.getPropertyAsString("nombre_Empleado"));
+                    obj.setNombre_Tienda(so.getPropertyAsString("nombre_Tienda"));
+                    obj.setNumero_doc(so.getPropertyAsString("numero_Documento"));
+                    obj.setTipo_doc(so.getPropertyAsString("tipo_Documento"));
+
+                    obj.setUnidades_vendidas(so.getPropertyAsString("unidades_Vendidas"));
+                    try{
+                        obj.setTotal_venta(Double.parseDouble(so.getPropertyAsString("total_Venta").toString()));
+
+
+                    }catch (Exception ex){
+
+                    }
+                    System.out.println(so.getPropertyAsString("nombre_Empleado"));
+
+                    lstVentas.add(obj);
+
                 }
             }
 
-
-
-            //SoapPrimitive result =
-            //(SoapPrimitive)response;
-/*
-            SoapPrimitive result =
-                    (SoapPrimitive)response.getProperty("return");
-            res = result.toString();
-
-            */
-      /*  } catch (IOException e){
+        } catch (IOException e){
             e.printStackTrace();
         } catch (XmlPullParserException e){
             e.printStackTrace();
         }
 
 
-
-        return  lsProdT;
+        return  lstVentas;
 
     }
-
-    */
-//}
+}

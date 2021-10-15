@@ -24,7 +24,6 @@ import com.example.proyectofinal.servicios.wsProductosTienda;
 import com.example.proyectofinal.servicios.wsVentasTienda;
 import com.example.proyectofinal.ui.gallery.GalleryViewModel;
 import com.example.proyectofinal.ui.home.DescriptionActivity;
-import com.example.proyectofinal.ui.home.ListAdapter;
 import com.example.proyectofinal.ui.home.ListElement;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -62,12 +61,12 @@ public class SlideshowFragment extends Fragment {
                         while (itr.hasNext()) {
                             mprod = itr.next();
 
-
-                            elements.add(new ListElement("#009688", mprod.getNombre(), mprod.getDireccion(),"Tel: " +  mprod.getTelefono(),mprod.getIdTienda()));
+                            elements.add(new ListElement("#EB4F15", "Tienda: " + mprod.getNombre(),"Direccion: " + mprod.getDireccion(),"Tel: " +  mprod.getTelefono(),mprod.getIdTienda()));
+                           // elements.add(new ListElement("#009688", mprod.getNombre(), mprod.getDireccion(),"Tel: " +  mprod.getTelefono(),mprod.getIdTienda()));
 
                         }
 
-                        ListAdapter listAdapter = new ListAdapter(elements, getContext(), new ListAdapter.OnItemClickListener() {
+                        ListAdapter2 listAdapter = new ListAdapter2(elements, getContext(), new ListAdapter2.OnItemClickListener() {
                             @Override
                             public void onItemClick(ListElement item) {
                                 moveToDescription(item); //le pasamos el item que le diamos click

@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
         int vretorna =1;
         funciones fn = new funciones();
         wsLogin vlog = new wsLogin();
-        String encrypass =ppass;// fn.toSHA256(ppass);
+        String encrypass =fn.toSHA256(ppass);
         vretorna = vlog.wsValid(pmail,encrypass);
 
         return vretorna;

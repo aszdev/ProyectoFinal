@@ -16,16 +16,10 @@ import java.io.IOException;
 public class wsLogin {
     public int wsValid(String pmail, String ppass){
 
-
-
-    AuthTask at = new AuthTask();
-        at.setUsername(pmail);
-        at.setPassword(ppass);
-        at.execute();
         int ret =0;
         try{
-             String res= at.resultado;
-            System.out.println("Resultado final: " +res);
+             String res= new AuthTask().execute(pmail,ppass).get();
+             System.out.println("Resultado final: " +res);
              ret = Integer.valueOf(res);
         }catch (Exception ex){
             System.out.println("Error al convertir el numero: " + ex.getMessage());
@@ -37,7 +31,7 @@ public class wsLogin {
 }
 
 
-class AuthTask extends AsyncTask<Void, Void, String> {
+class AuthTask extends AsyncTask<String, Void, String> {
     public static final  String SOAP_ACTION = "http://192.168.1.2:8012/Usuario/IniciarSesionRequest";
     public static final String METHOD = "IniciarSesion";
     public static final String NAMESPACE = "http://servicios.org/";
@@ -48,10 +42,10 @@ class AuthTask extends AsyncTask<Void, Void, String> {
 
 
     @Override
-    protected String doInBackground(Void... params) {
+    protected String doInBackground(String... params) {
         SoapObject request = new SoapObject(NAMESPACE, METHOD);
-        request.addProperty("Correo",getUsername());
-        request.addProperty("Clave", getPassword());
+        request.addProperty("Correo",params[0]);
+        request.addProperty("Clave", params[1]);
         String res="0";
 
        // System.out.println("Email = " + getUsername());
@@ -82,31 +76,6 @@ class AuthTask extends AsyncTask<Void, Void, String> {
         System.out.println("resultado: " + res);
         this.resultado = res;
         return res;
-    }
-
-
-    @Override
-    protected void onPostExecute(String aBoolean) {
-        super.onPostExecute(aBoolean);
-        //tv1.setText("Resultado " + aBoolean);
-        this.resultado = aBoolean;
-       //setResultado(aBoolean);
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 }

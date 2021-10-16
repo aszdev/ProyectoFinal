@@ -16,5 +16,10 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/reporteicono"
             android:title="@string/menu_slideshow" />
+
+        <item
+            android:id="@+id/nav_misviajes"
+            android:icon="@drawable/ic_menu_share"
+            android:title="@string/menu_asignados" />
     </group>
 </menu>

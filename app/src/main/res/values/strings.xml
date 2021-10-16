@@ -26,8 +26,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Salir</string>
 
-    <string name="menu_home">Viajes Asignados</string>
+    <string name="menu_home">Viajes Pendientes</string>
     <string name="menu_gallery">Productos por Tienda</string>
     <string name="menu_slideshow">Reporte Ventas Tienda</string>
-
+    <string name="menu_asignados">Mis Viajes</string>
 </resources>

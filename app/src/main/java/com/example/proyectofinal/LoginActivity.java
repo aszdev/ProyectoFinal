@@ -69,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         if(idusuario>0){
             mostrarAlerta("Bienvenido!!!");
             Intent intent = new Intent(LoginActivity.this, MainActivityMenu.class);
+            intent.putExtra("idusuario",idusuario);
             startActivity(intent);
             finish();
             return true;

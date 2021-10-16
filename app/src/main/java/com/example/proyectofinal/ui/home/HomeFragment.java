@@ -1,6 +1,8 @@
 package com.example.proyectofinal.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +42,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
+        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String loginid = sharedPref.getString("loginid","0");
+
+
         homeViewModel =
                 new ViewModelProvider(this).get(GalleryViewModel.class);
 
@@ -70,29 +77,13 @@ public class HomeFragment extends Fragment {
 
                 }
 
-              /*  elements.add(new ListElement("#775447", "Pedro", "Mexico", "Activo"));
-                elements.add(new ListElement("#607d8b", "Julio", "Mixco", "Activo"));
-                elements.add(new ListElement("#f44336", "Jose", "VillaNueva", "Activo"));
-                elements.add(new ListElement("#009688", "Jesica", "Guatemla", "Inactivo"));
-                elements.add(new ListElement("#775447", "Pedro", "Mexico", "Activo"));
-                elements.add(new ListElement("#607d8b", "Julio", "Mixco", "Activo"));
-                elements.add(new ListElement("#f44336", "Jose", "VillaNueva", "Activo"));
-                elements.add(new ListElement("#009688", "Jesica", "Guatemla", "Inactivo"));
-                elements.add(new ListElement("#775447", "Pedro", "Mexico", "Activo"));
-                elements.add(new ListElement("#607d8b", "Julio", "Mixco", "Activo"));
-                elements.add(new ListElement("#f44336", "Jose", "VillaNueva", "Activo"));
-                elements.add(new ListElement("#009688", "Jesica", "Guatemla", "Inactivo"));
-                elements.add(new ListElement("#775447", "Pedro", "Mexico", "Activo"));
-                elements.add(new ListElement("#607d8b", "Julio", "Mixco", "Activo"));
-                elements.add(new ListElement("#f44336", "Jose", "VillaNueva", "Activo"));
-                elements.add(new ListElement("#009688", "Jesica", "Guatemla", "Inactivo"));
-               */
+
 
 
                 ListAdapter listAdapter = new ListAdapter(elements, getContext(), new ListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(ListElement item) {
-                        moveToDescription(item); //le pasamos el item que le diamos click
+                        moveToDescription(item,loginid); //le pasamos el item que le diamos click
                     }
                 });
 
@@ -107,9 +98,10 @@ public class HomeFragment extends Fragment {
         return root;
     }
     //damos click y que nos pase a la otra actividad con los valores asigandos
-    public void moveToDescription(ListElement item){
+    public void moveToDescription(ListElement item,String idloging){
         Intent intent = new Intent(getContext(), DescriptionActivity.class);
         intent.putExtra("ListElement", item);
+        intent.putExtra("idlogin", idloging);
         startActivity(intent);
 
     }

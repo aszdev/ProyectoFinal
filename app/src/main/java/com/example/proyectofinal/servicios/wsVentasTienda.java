@@ -3,6 +3,7 @@ package com.example.proyectofinal.servicios;
 import android.os.AsyncTask;
 
 import com.example.proyectofinal.modelos.ModeloListarTiendas;
+import com.example.proyectofinal.modelos.ModeloPedidosVentas;
 import com.example.proyectofinal.modelos.ModeloProductosTienda;
 import com.example.proyectofinal.modelos.ModeloReporteVentas;
 
@@ -35,6 +36,18 @@ public class wsVentasTienda {
         try{
             System.out.println("Si llega");
             lsvent = new TaskVentasTienda().execute(fechaini,fechafin,tienda).get();
+        }catch (Exception ex){
+
+        }
+
+        return  lsvent;
+    }
+
+    public List listarVentasPendiente(String idtienda){
+        List lsvent = null;
+        try{
+            System.out.println("Si llega");
+            lsvent = new TaskVentasPendiente().execute(idtienda).get();
         }catch (Exception ex){
 
         }
@@ -179,6 +192,78 @@ class TaskVentasTienda extends AsyncTask<String, Void, List> {
 
                     }
                     System.out.println(so.getPropertyAsString("nombre_Empleado"));
+
+                    lstVentas.add(obj);
+
+                }
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+        } catch (XmlPullParserException e){
+            e.printStackTrace();
+        }
+
+
+        return  lstVentas;
+
+    }
+}
+
+
+class TaskVentasPendiente extends AsyncTask<String, Void, List> {
+    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ListarPedidoVentas";
+    public static final String METHOD = "ListarPedidoVentas";
+    public static final String NAMESPACE = "http://servicios.org/";
+    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    private  String username;
+    private String password;
+    static public   String resultado;
+
+
+    @Override
+    protected List doInBackground(String... strings) {
+        ArrayList<ModeloPedidosVentas> lstVentas = new ArrayList<>();
+        SoapObject request = new SoapObject(NAMESPACE, METHOD);
+        request.addProperty("IdTienda",strings[0]);
+
+
+        // System.out.println("Email = " + getUsername());
+        //System.out.println("Pass = " + getPassword());
+
+        SoapSerializationEnvelope envelope =
+                new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE tranport = new HttpTransportSE(URL);
+        try {
+            tranport.call(SOAP_ACTION, envelope);
+            SoapObject soapObject = (SoapObject)envelope.bodyIn;
+            //  SoapPrimitive result =
+            //        (SoapPrimitive)soapObject.getProperty(0);
+            //System.out.println("Impresion: " +result);
+
+            if (soapObject != null && soapObject.getPropertyCount() > 0) {
+                for (int i = 0; i < soapObject.getPropertyCount(); i++) {
+                    SoapObject so = (SoapObject) soapObject.getProperty(i);
+                    ModeloPedidosVentas obj = new ModeloPedidosVentas();
+
+                    obj.setDIRECCION(so.getPropertyAsString("DIRECCION"));
+
+
+                    obj.setNOMBRE(so.getPropertyAsString("NOMBRE"));
+                    obj.setTELEFONO(so.getPropertyAsString("TELEFONO"));
+
+                    try{
+                        obj.setIDVENTA(Integer.parseInt(so.getPropertyAsString("IDVENTA")));
+                        obj.setIDCLIENTE(Integer.parseInt(so.getPropertyAsString("IDCLIENTE")));
+                        obj.setIMPORTERECIBIDO(Double.parseDouble(so.getPropertyAsString("IMPORTERECIBIDO").toString()));
+
+
+                    }catch (Exception ex){
+
+                    }
 
                     lstVentas.add(obj);
 

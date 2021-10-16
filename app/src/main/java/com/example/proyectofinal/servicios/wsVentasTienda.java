@@ -68,6 +68,18 @@ public class wsVentasTienda {
 
     }
 
+    public List listarMisVajes(String idmensajero){
+        List lsvent = null;
+        try{
+            System.out.println("Si llega");
+            lsvent = new TaskMisViajes().execute(idmensajero).get();
+        }catch (Exception ex){
+
+        }
+
+        return  lsvent;
+    }
+
 }
 
 
@@ -341,6 +353,78 @@ class TaskActualizar extends AsyncTask<String, Void, Boolean> {
 
 
         return  true;
+
+    }
+}
+
+
+class TaskMisViajes extends AsyncTask<String, Void, List> {
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes/ListarMisViajes";
+    public static final String METHOD = "ListarMisViajes";
+    public static final String NAMESPACE = "http://servicios.org/";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes?wsdl";
+    private  String username;
+    private String password;
+    static public   String resultado;
+
+
+    @Override
+    protected List doInBackground(String... strings) {
+        ArrayList<ModeloPedidosVentas> lstVentas = new ArrayList<>();
+        SoapObject request = new SoapObject(NAMESPACE, METHOD);
+        request.addProperty("IdMensajero",strings[0]);
+
+
+        // System.out.println("Email = " + getUsername());
+        //System.out.println("Pass = " + getPassword());
+
+        SoapSerializationEnvelope envelope =
+                new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE tranport = new HttpTransportSE(URL);
+        try {
+            tranport.call(SOAP_ACTION, envelope);
+            SoapObject soapObject = (SoapObject)envelope.bodyIn;
+            //  SoapPrimitive result =
+            //        (SoapPrimitive)soapObject.getProperty(0);
+            //System.out.println("Impresion: " +result);
+
+            if (soapObject != null && soapObject.getPropertyCount() > 0) {
+                for (int i = 0; i < soapObject.getPropertyCount(); i++) {
+                    SoapObject so = (SoapObject) soapObject.getProperty(i);
+                    ModeloPedidosVentas obj = new ModeloPedidosVentas();
+
+                    obj.setDIRECCION(so.getPropertyAsString("DIRECCION"));
+
+
+                    obj.setNOMBRE(so.getPropertyAsString("NOMBRE"));
+                    obj.setTELEFONO(so.getPropertyAsString("TELEFONO"));
+
+                    try{
+                        obj.setIDVENTA(Integer.parseInt(so.getPropertyAsString("IDVENTA")));
+                        obj.setIDCLIENTE(Integer.parseInt(so.getPropertyAsString("IDCLIENTE")));
+                        obj.setIMPORTERECIBIDO(Double.parseDouble(so.getPropertyAsString("IMPORTERECIBIDO").toString()));
+
+
+                    }catch (Exception ex){
+
+                    }
+
+                    lstVentas.add(obj);
+
+                }
+            }
+
+        } catch (IOException e){
+            e.printStackTrace();
+        } catch (XmlPullParserException e){
+            e.printStackTrace();
+        }
+
+
+        return  lstVentas;
 
     }
 }

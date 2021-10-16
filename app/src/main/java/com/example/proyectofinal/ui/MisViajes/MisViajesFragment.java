@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.proyectofinal.clases.Globales;
 import com.example.proyectofinal.databinding.FragmentHomeBinding;
 import com.example.proyectofinal.modelos.ModeloListarTiendas;
+import com.example.proyectofinal.modelos.ModeloPedidosVentas;
 import com.example.proyectofinal.modelos.ModeloTiendaItem;
 import com.example.proyectofinal.servicios.wsVentasTienda;
 import com.example.proyectofinal.ui.gallery.GalleryViewModel;
@@ -70,25 +71,26 @@ try{
                 ArrayList<ModeloTiendaItem> tiendasList = new ArrayList<>();
                 //Add countries
 
-                wsVentasTienda wsTienda = new wsVentasTienda();
-                List lsti =wsTienda.listarTiendas();
-                ModeloListarTiendas mtienda =null;
-                Iterator<ModeloListarTiendas> itr = lsti.iterator();
+                wsVentasTienda wsventas = new wsVentasTienda();
+                List lstiendas = wsventas.listarMisVajes(String.valueOf(Globales.gidusuario));
+                ModeloPedidosVentas mprod = null;
+                Iterator<ModeloPedidosVentas> itr = lstiendas.iterator();
 
-                while (itr.hasNext()){
-                    mtienda = itr.next();
 
-                    elements.add(new ListElement("#607d8b", mtienda.getNombre(), mtienda.getDireccion(), "Tel: " + mtienda.getTelefono(), mtienda.getIdTienda()));
+                while (itr.hasNext()) {
+                    mprod = itr.next();
+
+                    elements.add(new ListElement("#EB4F15", "Nombre: " + mprod.getNOMBRE(),"Direccion: " + mprod.getDIRECCION() + " Telefono: " + mprod.getTELEFONO(),"Importe: " + String.valueOf(mprod.getIMPORTERECIBIDO()),String.valueOf(mprod.getIDVENTA())));
+                    // elements.add(new ListElement("#009688", mprod.getNombre(), mprod.getDireccion(),"Tel: " +  mprod.getTelefono(),mprod.getIdTienda()));
+                    System.out.println("ID VENTA: " + mprod.getIDVENTA() + " Nombre: " + mprod.getNOMBRE());
+
 
                 }
-
-
-
 
                 ListAdapter listAdapter = new ListAdapter(elements, getContext(), new ListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(ListElement item) {
-                        moveToDescription(item); //le pasamos el item que le diamos click
+                       // actualizarSeleccionado(item,element); //le pasamos el item que le diamos click
                     }
                 });
 
@@ -104,9 +106,9 @@ try{
     }
     //damos click y que nos pase a la otra actividad con los valores asigandos
     public void moveToDescription(ListElement item){
-        Intent intent = new Intent(getContext(), DescriptionActivity.class);
-        intent.putExtra("ListElement", item);
-        startActivity(intent);
+       // Intent intent = new Intent(getContext(), DescriptionViajesActivity.class);
+      //  intent.putExtra("ListElement", item);
+       // startActivity(intent);
 
     }
     @Override

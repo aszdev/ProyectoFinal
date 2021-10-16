@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="28dp"
         android:fontFamily="sans-serif"
-        android:text="Bienvenido a la Aplicacion hecha por Marco Vinicio"
+        android:text="Bienvenido a la Aplicacion VDENT"
         android:textSize="24sp"
         android:textStyle="bold"
         android:transitionName="textTrans" />

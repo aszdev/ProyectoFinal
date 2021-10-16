@@ -3,6 +3,7 @@ package com.example.proyectofinal.servicios;
 import android.accessibilityservice.GestureDescription;
 import android.os.AsyncTask;
 
+import com.example.proyectofinal.clases.Globales;
 import com.example.proyectofinal.modelos.ModeloProductosTienda;
 
 import org.ksoap2.SoapEnvelope;
@@ -30,10 +31,10 @@ public  List produtosTienda(String tienda,String prod){
 }
 
 class TaskProductosTienda extends AsyncTask<String, Void, List> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ProductosTienda";
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes/ProductosTienda";
     public static final String METHOD = "ProductosTienda";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes?wsdl";
     private  String username;
     private String password;
     static public   String resultado;

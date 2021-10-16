@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
+import com.example.proyectofinal.clases.Globales;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapPrimitive;
@@ -32,10 +34,10 @@ public class wsLogin {
 
 
 class AuthTask extends AsyncTask<String, Void, String> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/Usuario/IniciarSesionRequest";
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/Usuario/IniciarSesionRequest";
     public static final String METHOD = "IniciarSesion";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.2:8012/WebServices/Usuario?wsdl";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Usuario?wsdl";
     private  String username;
     private String password;
     static public   String resultado;

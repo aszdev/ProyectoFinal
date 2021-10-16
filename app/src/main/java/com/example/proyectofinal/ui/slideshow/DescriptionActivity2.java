@@ -23,10 +23,13 @@ import com.example.proyectofinal.servicios.wsVentasTienda;
 import com.example.proyectofinal.ui.home.ListAdapter;
 import com.example.proyectofinal.ui.home.ListElement;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 public class DescriptionActivity2 extends AppCompatActivity {
     TextView titleDescriptionTextview;
@@ -124,7 +127,30 @@ public class DescriptionActivity2 extends AppCompatActivity {
 
                 wsVentasTienda wsventas = new wsVentasTienda();
 
-                List lstiendas = wsventas.listarVentas("2021-01-01","2021-10-25","0");
+
+                String textini =  tvDate.getText().toString();
+                String textfin =  etDate.getText().toString();
+                String fini[] = textini.split("/");
+                String anio1 = fini[0];
+                String mes1 = fini[1];
+                String dia1 = fini[2];
+                if(Integer.valueOf(dia1) >=1 && Integer.valueOf(dia1)<=9){
+                     dia1 = "0"+fini[2];
+                }
+                String ffin[] = textfin.split("/");
+                String anio2 = ffin[0];
+                String mes2 = ffin[1];
+                String dia2 = ffin[2];
+                if(Integer.valueOf(dia2) >=1 && Integer.valueOf(dia2)<=9){
+                    dia2 = "0"+ffin[2];
+                }
+                textini = anio1 +"-" +mes1+"-"+dia1;
+                textfin = anio2 +"-" +mes2+"-"+dia2;
+
+                System.out.println("Fecha incio: " + textini + " / fecha fin: "+textfin);
+
+
+                List lstiendas = wsventas.listarVentas(textini,textfin,element.getId());
                 ModeloReporteVentas mprod = null;
                 Iterator<ModeloReporteVentas> itr = lstiendas.iterator();
 
@@ -132,7 +158,7 @@ public class DescriptionActivity2 extends AppCompatActivity {
                 while (itr.hasNext()) {
                     mprod = itr.next();
 
-                    elements.add(new ListElement("#EB4F15", "No Doc: " + mprod.getNumero_doc(),"Fecha Venta: " + mprod.getFecha_venta(),"Precio: " + String.valueOf(mprod.getTotal_venta()),mprod.getNumero_doc()));
+                    elements.add(new ListElement("#EB4F15", "No Doc: " + mprod.getNumero_doc() + " Nombre:" + mprod.getNombre_Empleado(),"Fecha Venta: " + mprod.getFecha_venta(),"Precio: " + String.valueOf(mprod.getTotal_venta()),mprod.getNumero_doc()));
                     // elements.add(new ListElement("#009688", mprod.getNombre(), mprod.getDireccion(),"Tel: " +  mprod.getTelefono(),mprod.getIdTienda()));
                     System.out.println("No Doc: " + mprod.getNumero_doc() + " Fecha Venta: " + mprod.getFecha_venta());
 

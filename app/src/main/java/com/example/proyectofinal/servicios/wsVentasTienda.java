@@ -2,6 +2,7 @@ package com.example.proyectofinal.servicios;
 
 import android.os.AsyncTask;
 
+import com.example.proyectofinal.clases.Globales;
 import com.example.proyectofinal.modelos.ModeloListarTiendas;
 import com.example.proyectofinal.modelos.ModeloPedidosVentas;
 import com.example.proyectofinal.modelos.ModeloReporteVentas;
@@ -72,10 +73,10 @@ public class wsVentasTienda {
 
 
 class TaskListarTienda extends AsyncTask<String, Void, List> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ListadoTiendas";
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes/ListadoTiendas";
     public static final String METHOD = "ListadoTiendas";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes?wsdl";
 
     private  String username;
     private String password;
@@ -150,10 +151,10 @@ class TaskListarTienda extends AsyncTask<String, Void, List> {
 
 
 class TaskVentasTienda extends AsyncTask<String, Void, List> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ReporteVenta";
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes/ReporteVenta";
     public static final String METHOD = "ReporteVenta";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes?wsdl";
     private  String username;
     private String password;
     static public   String resultado;
@@ -224,10 +225,10 @@ class TaskVentasTienda extends AsyncTask<String, Void, List> {
 
 
 class TaskVentasPendiente extends AsyncTask<String, Void, List> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/ListarPedidoVentas";
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes/ListarPedidoVentas";
     public static final String METHOD = "ListarPedidoVentas";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes?wsdl";
     private  String username;
     private String password;
     static public   String resultado;
@@ -297,10 +298,10 @@ class TaskVentasPendiente extends AsyncTask<String, Void, List> {
 
 
 class TaskActualizar extends AsyncTask<String, Void, Boolean> {
-    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/Actualizar";
+    public static final  String SOAP_ACTION = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes/Actualizar";
     public static final String METHOD = "Actualizar";
     public static final String NAMESPACE = "http://servicios.org/";
-    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    public static final String URL = "http://"+Globales.IP+":"+Globales.Port+"/WebServices/Reportes?wsdl";
     private  String username;
     private String password;
     static public   String resultado;

@@ -4,11 +4,11 @@ import android.os.AsyncTask;
 
 import com.example.proyectofinal.modelos.ModeloListarTiendas;
 import com.example.proyectofinal.modelos.ModeloPedidosVentas;
-import com.example.proyectofinal.modelos.ModeloProductosTienda;
 import com.example.proyectofinal.modelos.ModeloReporteVentas;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 import org.xmlpull.v1.XmlPullParserException;
@@ -53,6 +53,18 @@ public class wsVentasTienda {
         }
 
         return  lsvent;
+    }
+
+    public boolean actualizar(String idventa,String idusuario){
+        boolean lsvent = true;
+        try{
+            System.out.println("Si llega");
+            lsvent = new TaskActualizar().execute(idventa,idusuario).get();
+        }catch (Exception ex){
+
+        }
+    return  true;
+
     }
 
 }
@@ -278,6 +290,56 @@ class TaskVentasPendiente extends AsyncTask<String, Void, List> {
 
 
         return  lstVentas;
+
+    }
+}
+
+
+
+class TaskActualizar extends AsyncTask<String, Void, Boolean> {
+    public static final  String SOAP_ACTION = "http://192.168.1.2:8012/WebServices/Reportes/Actualizar";
+    public static final String METHOD = "Actualizar";
+    public static final String NAMESPACE = "http://servicios.org/";
+    public static final String URL = "http://192.168.1.2:8012/WebServices/Reportes?wsdl";
+    private  String username;
+    private String password;
+    static public   String resultado;
+
+
+    @Override
+    protected Boolean doInBackground(String... strings) {
+        ArrayList<ModeloPedidosVentas> lstVentas = new ArrayList<>();
+        SoapObject request = new SoapObject(NAMESPACE, METHOD);
+        request.addProperty("ID_VENTA",strings[0]);
+        request.addProperty("ID_MENSAJERO",strings[1]);
+
+
+        // System.out.println("Email = " + getUsername());
+        //System.out.println("Pass = " + getPassword());
+
+        SoapSerializationEnvelope envelope =
+                new SoapSerializationEnvelope(SoapEnvelope.VER11);
+        envelope.dotNet = false;
+        envelope.setOutputSoapObject(request);
+
+        HttpTransportSE tranport = new HttpTransportSE(URL);
+        try {
+            tranport.call(SOAP_ACTION, envelope);
+            SoapObject soapObject = (SoapObject)envelope.bodyIn;
+              SoapPrimitive result =
+                  (SoapPrimitive)soapObject.getProperty("return");
+            //System.out.println("Impresion: " +result);
+
+
+
+        } catch (IOException e){
+            e.printStackTrace();
+        } catch (XmlPullParserException e){
+            e.printStackTrace();
+        }
+
+
+        return  true;
 
     }
 }

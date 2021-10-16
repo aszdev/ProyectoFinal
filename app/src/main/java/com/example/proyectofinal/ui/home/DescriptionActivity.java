@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyectofinal.R;
+import com.example.proyectofinal.clases.Globales;
 import com.example.proyectofinal.modelos.ModeloPedidosVentas;
 import com.example.proyectofinal.servicios.wsVentasTienda;
 
@@ -33,7 +34,12 @@ public class DescriptionActivity extends AppCompatActivity {
 
 //contiene la infor de la lista que presionamos
         ListElement element = (ListElement)  getIntent().getSerializableExtra("ListElement");
+
         String idlogin = (String)  getIntent().getSerializableExtra("idlogin");
+
+        System.out.println("ID LOGIN 1: "+idlogin);
+
+        System.out.println("Varible Global user: "+ Globales.gidusuario);
 
         titleDescriptionTextview = findViewById(R.id.titleDescriptionTextview);
         cityDescriptionTextview = findViewById(R.id.cityDescriptionTextview);
@@ -46,6 +52,14 @@ public class DescriptionActivity extends AppCompatActivity {
 
         statusDescriptionTextview.setText(element.getStatus());
         statusDescriptionTextview.setTextColor(Color.GRAY);
+
+
+        iniciarPedidos(element);
+
+
+    }
+
+    private void iniciarPedidos(ListElement element){
         RecyclerView tableLayout = findViewById(R.id.listRecyclerview2);
 
         elements = new ArrayList<>();
@@ -72,7 +86,7 @@ public class DescriptionActivity extends AppCompatActivity {
         ListAdapter listAdapter = new ListAdapter(elements, DescriptionActivity.this, new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(ListElement item) {
-                actualizarSeleccionado(item,idlogin); //le pasamos el item que le diamos click
+                actualizarSeleccionado(item,element); //le pasamos el item que le diamos click
             }
         });
 
@@ -81,14 +95,19 @@ public class DescriptionActivity extends AppCompatActivity {
         tableLayout.setAdapter(listAdapter);
 
 
-
-
-
-
     }
 
-    private void actualizarSeleccionado(ListElement item,String pidlogin){
-        Toast.makeText(getApplicationContext(), "ID VENTA: " + item.getId() + " IDMENSAJERO: " + pidlogin, Toast.LENGTH_SHORT).show();
+    private void actualizarSeleccionado(ListElement item,ListElement element){
+
+        wsVentasTienda wsventas = new wsVentasTienda();
+
+        boolean retorna = wsventas.actualizar(item.getId(),String.valueOf(Globales.gidusuario));
+
+        Toast.makeText(getApplicationContext(), "ITEM SELECCIONADO >>> ID VENTA: " + item.getId() + " IDMENSAJERO: " + Globales.gidusuario, Toast.LENGTH_SHORT).show();
+
+
+        iniciarPedidos(element);
+
     }
 
 }

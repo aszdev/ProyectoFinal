@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.proyectofinal.clases.Globales;
 import com.example.proyectofinal.clases.funciones;
 import com.example.proyectofinal.servicios.wsLogin;
 import com.google.android.material.button.MaterialButton;
@@ -67,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
         int idusuario = existeUsuariows(pmail,ppass);
 
         if(idusuario>0){
+            Globales.gidusuario = idusuario;
             mostrarAlerta("Bienvenido!!!");
             Intent intent = new Intent(LoginActivity.this, MainActivityMenu.class);
             intent.putExtra("idusuario",idusuario);

@@ -25,6 +25,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.proyectofinal.R;
+import com.example.proyectofinal.clases.Globales;
 import com.example.proyectofinal.clases.funciones;
 import com.example.proyectofinal.databinding.FragmentHomeBinding;
 import com.example.proyectofinal.modelos.ModeloListarTiendas;
@@ -37,14 +38,21 @@ public class HomeFragment extends Fragment {
     List<ListElement> elements;
     private GalleryViewModel homeViewModel;
     private FragmentHomeBinding binding;
-
+    String loginid="";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+try{
+    SharedPreferences sharedPref = getActivity().getSharedPreferences("shared_login_data",Context.MODE_APPEND);
+     loginid = sharedPref.getString("loginid","");
+    System.out.println("Login ID FORMA 1: " + loginid);
 
-        SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String loginid = sharedPref.getString("loginid","0");
+}catch (Exception ex){
+
+}
+
+        System.out.println("Varible Global user: "+ Globales.gidusuario);
 
 
         homeViewModel =
@@ -83,7 +91,7 @@ public class HomeFragment extends Fragment {
                 ListAdapter listAdapter = new ListAdapter(elements, getContext(), new ListAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(ListElement item) {
-                        moveToDescription(item,loginid); //le pasamos el item que le diamos click
+                        moveToDescription(item); //le pasamos el item que le diamos click
                     }
                 });
 
@@ -98,10 +106,9 @@ public class HomeFragment extends Fragment {
         return root;
     }
     //damos click y que nos pase a la otra actividad con los valores asigandos
-    public void moveToDescription(ListElement item,String idloging){
+    public void moveToDescription(ListElement item){
         Intent intent = new Intent(getContext(), DescriptionActivity.class);
         intent.putExtra("ListElement", item);
-        intent.putExtra("idlogin", idloging);
         startActivity(intent);
 
     }

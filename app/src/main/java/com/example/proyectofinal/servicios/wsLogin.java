@@ -26,7 +26,7 @@ public class wsLogin {
         }
 
 
-     return 1;
+     return ret;
     }
 }
 
